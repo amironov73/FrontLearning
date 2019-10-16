@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="nu-prefers-color-scheme">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://cdn.jsdelivr.net/npm/numl@0.6.17/dist/numl.js"></script>
+</head>
+<body>
+<nu-block padding="1" color="text">
+    <nu-theme></nu-theme>
+    <nu-card
+            display="flex"
+            width="clamp(320px, 40%)"
+            responsive="480px"
+            labelledby="heading"
+            describedby="description price"
+            gap="1" flow="row|column">
+        <nu-icon name="package" size="4" place="start"></nu-icon>
+        <nu-flow gap=".5" grow="1">
+            <nu-heading level="3" id="heading">Журчалки печальные</nu-heading>
+            <nu-line></nu-line>
+            <nu-block id="description">Длинное и не очень понятное описание того, что такое эти журчалки</nu-block>
+            <nu-flex gap="1" items="center|start" flow="row|column-reverse">
+                <nu-btn>
+                    <nu-icon name="dollar-sign" inline></nu-icon>
+                    Купи сейчас
+                </nu-btn>
+                <nu-block mod="w6" color="special" size="lg|md" id="price">
+                    всего за $99.99
+                </nu-block>
+            </nu-flex>
+        </nu-flow>
+    </nu-card>
+    <nu-card
+            display="flex"
+            width="clamp(320px, 40%)"
+            responsive="480px"
+            labelledby="heading"
+            describedby="description price"
+            gap="1" flow="row|column">
+        <nu-icon name="package" size="4" place="start"></nu-icon>
+        <nu-flow gap=".5" grow="1">
+            <nu-heading level="3" id="heading">Печальки журчальные</nu-heading>
+            <nu-line></nu-line>
+            <nu-block id="description">Опять же довольно непонятное описание печалек</nu-block>
+            <nu-flex gap="1" items="center|start" flow="row|column-reverse">
+                <nu-btn special>
+                    <nu-icon name="dollar-sign" inline></nu-icon>
+                    Купи сейчас
+                </nu-btn>
+                <nu-block mod="w6" color="special" size="lg|md" id="price">
+                    всего за $99.99
+                </nu-block>
+            </nu-flex>
+        </nu-flow>
+    </nu-card>
+</nu-block>
+</body>
+</html>
