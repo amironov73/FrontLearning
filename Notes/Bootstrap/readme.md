@@ -84,3 +84,11 @@
   </body>
 </html>
 ```
+
+#### Breakpoints
+
+* Extra small < 544px
+* Small ≥ 544px
+* Medium ≥ 768px
+* Large ≥ 992px
+* Extra large ≥ 1200px

@@ -31,3 +31,25 @@
 ```
 
 ![button](img/button2.png)
+
+
+Кнопки бывают обычные, большие и маленькие:
+
+```html
+<button type="button" class="btn btn-lg btn-primary">Большая</button>
+<button type="button" class="btn btn-primary">Обычная</button>
+<button type="button" class="btn btn-sm btn-primary">Маленькая</button>
+```
+
+![button](img/button3.png)
+
+В обычном состоянии ширина кнопки определяется её размером, но можно сделать блочную кнопку, которая автоматически растянется на всю доступную ширину.
+
+```html
+<button type="button" class="btn btn-block btn-primary">Блочная</button>
+```
+
+![button](img/button4.png)
+
+#### Чекбоксы
+
