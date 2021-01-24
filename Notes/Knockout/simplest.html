@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Осваиваем Knockout</title>
+    <script src="js/knockout-latest.js"></script>
+
+    <style>
+        .table { display: table; margin: auto; }
+        .row   { display: table-row; }
+        .cell  { display: table-cell; padding: 2px; }
+    </style>
+
+</head>
+
+<body>
+
+<p>Knockout.js — свободный JavaScript каркас веб-приложений,
+    реализующий Model-View-View-Model шаблон c образцами. Основные особенности:</p>
+
+<ul>
+    <li>Декларативное связывание.</li>
+    <li>Автоматическое обновление интерфейса при изменении состояния данных модели.</li>
+    <li>Отслеживание зависимостей.</li>
+</ul>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            <label for="firstName">First name:</label>
+        </div>
+        <div class="cell">
+            <input id="firstName" data-bind="value: firstName"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            <label for="lastName">Last name:</label>
+        </div>
+        <div class="cell">
+            <input id="lastName" data-bind="value: lastName"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            Full name:
+        </div>
+        <div class="cell">
+            <strong id="fullName" data-bind="text: fullName"></strong>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function ViewModel() {
+        this.firstName = ko.observable("Joe");
+        this.lastName = ko.observable("Bloggs");
+
+        this.fullName = ko.computed(function() {
+            return this.firstName() + " " + this.lastName();
+        }, this);
+    }
+
+    ko.applyBindings(new ViewModel());
+
+</script>
+
+</body>
+</html>
