@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+<h1>Осваиваем DevExtreme</h1>
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<div class="dx-form" style="margin: auto; width: 50%; border: thin blue solid;">
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">Первое слагаемое:</div>
+            <div class="dx-field-value">
+                <div id="firstTerm"></div>
+            </div>
+        </div>
+        <div class="dx-field">
+            <div class="dx-field-label">Второе слагаемое:</div>
+            <div class="dx-field-value">
+                <div id="secondTerm"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">
+                <div id="sumButton"></div>
+            </div>
+            <div class="dx-field-value">
+                <div id="sum"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Итак, мы научились вычислять сумму двух чисел</h2>
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<script>
+    $(function () {
+        const firstTermBox = $("#firstTerm").dxTextBox({
+            placeholder: "Первое слагаемое",
+            showClearButton: true,
+            stylingMode: 'filled'
+        }).dxTextBox('instance');
+
+        const secondTermBox = $("#secondTerm").dxTextBox({
+            placeholder: "Второе слагаемое",
+            showClearButton: true,
+            stylingMode: 'filled'
+        }).dxTextBox('instance');
+
+        const sumBox = $("#sum").dxTextBox({
+            reaOnly: true,
+            stylingMode: 'filled'
+        }).dxTextBox('instance');
+
+        $("#sumButton").dxButton({
+            text: "Вычислить сумму",
+            type: "default",
+            onClick: function () {
+                const firstTerm = parseFloat(firstTermBox.option('value'));
+                const secondTerm = parseFloat(secondTermBox.option('value'));
+                sumBox.option('value', firstTerm + secondTerm);
+            }
+        });
+    });
+</script>
+</body>
+</html>

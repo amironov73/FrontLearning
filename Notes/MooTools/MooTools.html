@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Осваиваем MooTools</title>
+    <script src="js/MooTools-More-1.6.0.js"></script>
+</head>
+<body>
+
+<p><a href="https://mootools.net/">MooTools</a> — это бесплатный
+    JavaScript-фреймворк для разработки кроссбраузерных веб-приложений
+    и веб-сервисов.</p>
+
+<div id="foo">Some FOO.</div>
+
+<p>Доступ к DOM.</p>
+<script>
+    // get elements by id
+    const foos = $$('#foo');
+    document.writeln(foos.length);
+    document.writeln('<br/>');
+
+    // get a single element
+    const foo = document.getElement('div#foo');
+    document.writeln(foo.innerHTML);
+    document.writeln('<br/>');
+</script>
+<br/>
+
+<p>Конструирование элементов DOM, работа с событиями.</p>
+<script>
+    // using the element constructor
+    const element = new Element('div', {
+        'class': 'foo',
+        id: 'bar'
+    });
+    element.appendHTML('Some HTML');
+
+    // attach a click event o a element
+    element.addEvent('click', function(){
+        alert('clicked!');
+    });
+
+    element.inject($(document.body));
+</script>
+<br/>
+
+<p>AJAX</p>
+<script>
+    // create a new Request instance
+    const request = new Request({
+    url: 'getMyText.php',
+    method: 'get',
+    onRequest: function(){
+        element.set('text', 'loading...');
+    },
+    onSuccess: function(responseText){
+        element.set('text', responseText);
+    },
+    onFailure: function(){
+        element.set('text', 'Sorry, your request failed :(');
+    }
+    });
+
+    const data = { title: 'The title' };
+
+    // and to send it:
+    request.send(data);
+</script>
+<br/>
+
+<p>JSONP</p>
+<script>
+    const myJSONP = new Request.JSONP({
+        url: 'http://goo.gl/cCLshl?format=json',
+        callbackKey: 'jsoncallback',
+        data: {
+            viewType: 'json',
+        },
+        onRequest: function (url) {
+            // a script tag is created with a
+            // src attribute equal to url
+        },
+        onComplete: function (data) {
+            // the request was completed
+            // and data received the server answer.
+            console.log(data); // answer object with data
+        }
+    }).send();
+</script>
+<br/>
+
+<p>Конструирование HTML-таблиц</p>
+<script>
+    var myTable = new HtmlTable({
+        properties: {
+            border: 2,
+            cellpadding: 2
+        },
+        headers: ['fruits', 'colors'],
+        rows: [
+            ['apple', 'red'],
+            ['lemon', 'yellow']
+        ]
+    });
+
+    myTable.inject($(document.body));
+
+    // and to push more data into it:
+    myTable.push(['lime', 'green']);
+</script>
+<br/>
+
+<p>Поддержка объектно-ориентированного программирования</p>
+<script>
+    const Animal = new Class({
+
+        initialize: function(name){
+            this.name = name;
+        }
+
+    });
+
+    const Cat = new Class({
+
+        Extends: Animal,
+
+        talk: function(){
+            return 'Meow!';
+        }
+
+    });
+
+    const Dog = new Class({
+
+        Extends: Animal,
+
+        talk: function(){
+            return 'Arf! Arf';
+        }
+
+    });
+
+    const animals = {
+        a: new Cat('Missy'),
+        b: new Cat('Mr. Bojangles'),
+        c: new Dog('Lassie')
+    };
+
+    for (var key in animals) {
+        document.writeln(animals[key].name + ': ' + animals[key].talk());
+        document.writeln('<br/>');
+    }
+</script>
+<br/>
+
+</body>
+</html>

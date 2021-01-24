@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Осваиваем Underscore</title>
+    <script src="js/underscore.js"></script>
+</head>
+<body>
+
+<a href="http://underscorejs.org/" rel="noopener noreferrer" target="_blank">Underscore</a> — библиотека JavaScript, реализующая дополнительную функциональность для работы с массивами, объектами и функциями, изначально отсутствующую в javascript, но имеющую аналоги в других языках. Библиотека умеет делегировать вызовы, если какая-то функциональность реализована разработчиками браузеров.
+
+<h3>Работа с коллекциями</h3>
+<p><code>each, map, reduce, reduceRight, detect, select, reject, all, any, include, invoke, pluck, max, min, sortBy, sortedIndex, toArray, size</code></p>
+
+<p>Примеры</p>
+
+<script>
+    document.writeln(_.map([1, 2, 3], function(num){ return num * 3 }));
+</script>
+<br/>
+
+<script>
+    var sum = _.reduce([1, 2, 3], function(memo, num){ return memo + num }, 0);
+    document.writeln(sum);
+</script>
+<br/>
+
+<script>
+    // Любой из элементов массива true
+    document.writeln(_.any([null, 0, 'yes', false]));
+</script>
+<br/>
+
+<script>
+    // Все элементы массива true
+    document.writeln(_.all([true, 1, null, 'yes']));
+</script>
+<br/>
+
+<script>
+    // Вытаскиваем массив значений по ключу
+    var stooges = [{name : 'moe', age : 40}, {name : 'larry', age : 50}];
+    document.writeln(_.pluck(stooges, 'name'));
+</script>
+<br/>
+
+<h3>Работа с массивами</h3>
+
+<p><code>first, rest, last, compact, flatten, without, uniq, intersect, zip, indexOf, lastIndexOf, range</code></p>
+
+<p>Примеры</p>
+
+<script>
+// Первый элемент массива
+    document.writeln(_.first([5, 4, 3, 2, 1]));
+</script>
+<br/>
+
+<script>
+    // Последний элемент массива
+    document.writeln(_.last([5, 4, 3, 2, 1]));
+</script>
+<br/>
+
+<script>
+    // Убрать неугодные элементы
+    document.writeln(_.without([1, 2, 1, 0, 3, 1, 4], 0, 1));
+</script>
+<br/>
+
+<script>
+    // Оставить только уникальные элементы
+    document.writeln(_.uniq([1, 2, 1, 3, 1, 4]));
+</script>
+<br/>
+
+<h3>Работа с функциями</h3>
+<p><code>bind, bindAll, memoize, delay, defer, wrap, compose</code></p>
+
+<p>Примеры</p>
+
+<script>
+    // Кэшируем результаты вычислений функции
+    const fibonacci = function(n) {
+        return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+    };
+    const fastFibonacci = _.memoize(fibonacci);
+    document.writeln(fastFibonacci(10));
+</script>
+<br/>
+
+<h3>Работа с объектами</h3>
+
+<p><code>keys, values, functions, extend, clone, tap, isEqual, isEmpty, isElement, isArray, isArguments, isFunction, isString, isNumber, isBoolean, isDate, isRegExp isNaN, isNull, isUndefined</code></p>
+
+<p>Примеры</p>
+
+<script>
+    // Вытащить имена свойств
+    document.writeln(_.keys({one : 1, two : 2, three : 3}));
+</script>
+<br/>
+
+<script>
+    // Вытащить значения свойств
+    document.writeln(_.values({one : 1, two : 2, three : 3}));
+</script>
+<br/>
+
+<script>
+    // Копируем свойства одного объекта в другой
+    document.writeln(_.extend({name : 'moe'}, {age : 50}));
+</script>
+
+<h3>Утилиты</h3>
+<p><code>noConflict, identity, times, breakLoop, mixin, uniqueId, template</code></p>
+
+<p>Примеры</p>
+
+<script>
+    // Удобно и привычно
+    _(5).times(function(){ document.writeln('Odelay! '); });
+</script>
+<br/>
+
+</body>
+</html>
