@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>Осваиваем DevExtreme</h1>
+
+<div class="dx-form" style="margin: auto; width: 300px; border: solid blue thin; padding: 5px;">
+    <div class="dx-fieldset" style="margin: 5px; font-weight: bold;">Выберите фрукты</div>
+    <div class="dx-field">
+        <div class="dx-field-label">
+            <div id="appleBox"></div>
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">
+            <div id="lemonBox"></div>
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">
+            <div id="grapeBox"></div>
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">
+            <div id="bananaBox"></div>
+        </div>
+    </div>
+    <div id="selected" style="font-weight: bold; color: white; background: blue; padding: 5px;"></div>
+</div>
+
+<script>
+
+    function getText(item) {
+        const component = $(item).dxCheckBox('instance');
+        return component.option('value') ? component.option('text') : '';
+    }
+
+    function showSelected() {
+        let text = ['#appleBox', '#lemonBox', '#grapeBox', '#bananaBox']
+            .map(getText)
+            .filter(xx => xx)
+            .join(', ');
+        if (!text) {
+            text = '--НИЧЕГО--';
+        }
+        $("#selected").html(text);
+    }
+
+    $(function () {
+        $("#appleBox").dxCheckBox({
+            text: 'Яблоки',
+            value: true,
+            onValueChanged: showSelected,
+        });
+
+        $("#lemonBox").dxCheckBox({
+            text: 'Лимоны',
+            onValueChanged: showSelected,
+        });
+
+        $("#grapeBox").dxCheckBox({
+            text: 'Виноград',
+            onValueChanged: showSelected,
+        });
+
+        $("#bananaBox").dxCheckBox({
+            text: 'Бананы',
+            onValueChanged: showSelected,
+        });
+
+        showSelected();
+    });
+
+</script>
+
+</body>
+</html>

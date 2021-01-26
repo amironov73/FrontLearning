@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .table { display: table; margin: auto; }
+        .row   { display: table-row; }
+        .cell  { display: table-cell; padding: 2px; }
+    </style>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>Осваиваем DevExtreme</h1>
+
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            <div id="alertButton"></div>
+        </div>
+        <div class="cell">
+            <div id="confirmButton"></div>
+        </div>
+        <div class="cell">
+            <div id="customButton"></div>
+        </div>
+        <div class="cell">
+            <div id="errorButton"></div>
+        </div>
+        <div class="cell">
+            <div id="successButton"></div>
+        </div>
+    </div>
+</div>
+
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<script>
+
+
+    $(function () {
+        $("#alertButton")
+            .dxButton({
+                type: 'default',
+                text: 'Алерт',
+                onClick: function () {
+                    DevExpress.ui.dialog.alert('Пожарная тревога, всем срочно покинуть здание!', 'Внимание!');
+                }
+            });
+
+        $("#confirmButton")
+            .dxButton({
+                type: 'default',
+                text: 'Конфирм',
+                onClick: function () {
+                    const result = DevExpress.ui.dialog.confirm('Будете есть чебуреки?', 'Важный вопрос');
+                    result.done(function (dialogResult) {
+                        alert(dialogResult ? 'Вы согласились!' : 'Вы отказались!');
+                    });
+                }
+            });
+
+        $("#customButton")
+            .dxButton({
+                type: 'default',
+                text: 'Кастом',
+                onClick: function () {
+                    const dialog = DevExpress.ui.dialog.custom({
+                        title: 'Кастом диалог',
+                        messageHtml: 'Доктор, доктор, как нам быть?<br/>Уши мыть или не мыть?',
+                        buttons: [
+                            {
+                                text: 'Отвечает доктор ЕЖЕ!',
+                                onClick: function() {
+                                    return 'ЕЖЕ';
+                                }
+                            },
+                            {
+                                text: 'Отвечает доктор ГНЕВНО!',
+                                onClick: function() {
+                                    return 'ГНЕВНО';
+                                }
+                            },
+                        ]
+                    });
+
+                    dialog.show().done(function (dialogResult) {
+                        alert(dialogResult);
+                    })
+                }
+            });
+
+        $("#errorButton")
+            .dxButton({
+                type: 'default',
+                text: 'Еррор',
+                onClick: function () {
+                    DevExpress.ui.notify('Пожарная тревога!', 'error', 3000);
+                }
+            });
+
+        $("#successButton")
+            .dxButton({
+                type: 'default',
+                text: 'Сакцесс',
+                onClick: function () {
+                    DevExpress.ui.notify('Оно работает!', 'success', 3000);
+                }
+            });
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .table { display: table; margin: auto; }
+        .row   { display: table-row; }
+        .cell  { display: table-cell; padding: 2px; }
+    </style>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>Осваиваем DevExtreme</h1>
+
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            Первый спарклайн:
+        </div>
+        <div class="cell">
+            <div id="firstSparkline"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            Второй спарклайн:
+        </div>
+        <div class="cell">
+            <div id="secondSparkline"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            Третий спарклайн:
+        </div>
+        <div class="cell">
+            <div id="thirdSparkline"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            Четвертый спарклайн:
+        </div>
+        <div class="cell">
+            <div id="fourthSparkline"></div>
+        </div>
+    </div>
+</div>
+
+<p>У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.
+    У попа была собака, он её любил, она съела кусок мяса, он её убил.
+    В землю закопал и надпись написал, что у попа была собака, он её любил.</p>
+
+<script>
+
+    const numbers = [ 60, 78, 98, 5, 25, 23, 56, 21, 27, 9, 18,
+        38, 77, 31, 5, 8, 75, 26, 66, 76];
+
+    $(function () {
+        const firstSparkline = $("#firstSparkline")
+            .dxSparkline({
+                type: 'line',
+                dataSource: numbers,
+                lineColor: 'red',
+                lineWidth: 2
+            })
+            .dxSparkline('instance');
+
+        const secondSparkline = $("#secondSparkline")
+            .dxSparkline({
+                type: 'spline',
+                dataSource: numbers,
+                lineColor: 'blue',
+                lineWidth: 2,
+            })
+            .dxSparkline('instance');
+
+        const thirdSparkline = $("#thirdSparkline")
+            .dxSparkline({
+                type: 'bar',
+                dataSource: numbers,
+                barPositiveColor: 'green',
+            })
+            .dxSparkline('instance');
+
+        const fourthSparkline = $("#fourthSparkline")
+            .dxSparkline({
+                type: 'area',
+                dataSource: numbers,
+                lineColor: 'magenta',
+                lineWidth: 2,
+            })
+            .dxSparkline('instance');
+    });
+
+</script>
+
+</body>
+</html>
