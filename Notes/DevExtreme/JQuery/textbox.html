@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .table {
+            display: table;
+            margin: auto;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme TextBox</h1>
+
+<div class="table"
+     style="width: 300px; margin: auto; border: thin solid blue;">
+    <div class="row">
+        <div class="cell">
+            Имя:
+        </div>
+        <div class="cell">
+            <div id="firstNameBox"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            Фамилия:
+        </div>
+        <div class="cell">
+            <div id="lastNameBox"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            ФИО:
+        </div>
+        <div class="cell">
+            <div id="fullNameBox"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showFullName () {
+        const firstName = $('#firstNameBox')
+            .dxTextBox('instance')
+            .option('value');
+        const lastName = $('#lastNameBox')
+            .dxTextBox('instance')
+            .option('value');
+        const fullName = lastName + ' ' + firstName;
+        $('#fullNameBox')
+            .dxTextBox('instance')
+            .option('value', fullName);
+    }
+
+    $(function () {
+        $('#firstNameBox').dxTextBox({
+            stylingMode: 'filled',
+            onValueChanged: showFullName
+        });
+
+        $('#lastNameBox').dxTextBox({
+            stylingMode: 'filled',
+            onValueChanged: showFullName
+        });
+
+        $('#fullNameBox').dxTextBox({
+            stylingMode: 'filled',
+            readOnly: true
+        });
+    });
+
+</script>
+
+</body>
+</html>

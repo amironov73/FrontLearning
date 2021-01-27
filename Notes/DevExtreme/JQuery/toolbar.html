@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme ToolBar</h1>
+
+<div id="wrapper"
+     style="width: 500px; height: 300px; margin: auto; border: thin solid blue; padding: 5px;">
+
+    <div id="toolbar"></div>
+    <div id="textArea" style="margin-top: 5px; height: 250px;"></div>
+
+</div>
+
+<script>
+
+    function addLine(line) {
+        const textArea = $('#textArea').dxTextArea('instance');
+        const text = textArea.option('value') + line + '\n';
+        textArea.option('value', text);
+    }
+
+    const fontNames = [ "Arial", "Courier", "Times", "Symbol" ];
+    const fontSizes = [ 6, 8, 10, 12, 14, 16, 18 ];
+
+    $(function () {
+       $('#toolbar').dxToolbar({
+            items: [{
+                widget: 'dxButton',
+                options: {
+                    icon: 'bold'
+                },
+                onClick: () => addLine('BOLD')
+                }, {
+                widget: 'dxButton',
+                options: {
+                    icon: 'italic'
+                },
+                onClick: () => addLine('ITALIC')
+                }, {
+                widget: 'dxButton',
+                options: {
+                    icon: 'underline'
+                },
+                onClick: () => addLine('UNDERLINE')
+                }, {
+                widget: 'dxSelectBox',
+                options: {
+                    width: 120,
+                    items: fontNames,
+                    value: fontNames[0],
+                    onValueChanged: function (args) {
+                        addLine('FONT=' + args.value);
+                    }
+                }
+                }, {
+                widget: 'dxSelectBox',
+                options: {
+                    width: 80,
+                    items: fontSizes,
+                    value: fontSizes[3],
+                    onValueChanged: function (args) {
+                        addLine('SIZE=' + args.value);
+                    }
+                },
+                }
+            ]
+       });
+
+       $('#textArea').dxTextArea({
+            value: 'Here is some text',
+            readOnly: true,
+       });
+
+    });
+
+</script>
+
+
+</body>
+</html>
