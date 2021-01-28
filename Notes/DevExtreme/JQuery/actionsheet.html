@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme ActionSheet</h1>
+
+<p>Компонент <strong>ActionSheet</strong> представляет собой список,
+    содержащий набор кнопок, расположенных одна над другой.
+    Эти кнопки обычно представляют варианты выбора,
+    относящиеся к одной задаче.</p>
+
+<div id="actionSheet"></div>
+
+<div id="container" style="width: 200px; margin: auto;">
+
+    <div id="askButton"></div>
+
+</div>
+
+<script>
+
+    const actionData = [
+        {
+            text: 'Купить',
+            icon: 'cart',
+        },
+        {
+            text: 'Продать',
+            icon: 'money',
+        },
+        {
+            text: 'Подумать',
+            icon: 'user',
+        },
+        {
+            text: 'Поспать',
+            icon: 'home'
+        },
+    ];
+
+    $(function () {
+        $('#actionSheet').dxActionSheet({
+            dataSource: actionData,
+            title: 'Что делать будем?',
+            cancelText: 'Ничего не будем делать',
+            onItemClick: function(value) {
+                DevExpress.ui.notify('Решено: ' + value.itemData.text);
+            },
+            onCancelClick: function() {
+                DevExpress.ui.notify('Ладно, ничего не будем делать!');
+            }
+        });
+
+        $('#askButton').dxButton({
+            text: 'Задать вопрос',
+            type: 'default',
+            onClick: function() {
+                $('#actionSheet').dxActionSheet('instance')
+                    .option('visible', true);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

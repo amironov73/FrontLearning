@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Chart</h1>
+
+<p>Диаграмма (Chart) - это интерактивный компонент пользовательского интерфейса,
+    который визуализирует данные из локального или удаленного хранилища
+    с использованием большого количества типов рядов данных.</p>
+
+<div id="container"
+     style="width: 500px; margin: auto; border: thin solid blue; padding: 5px;">
+
+    <div id="chartBox"></div>
+
+</div>
+
+<script>
+
+    const chartData = [
+        { year: '1900', income: 55, expenses: 33 },
+        { year: '1901', income: 49, expenses: 27 },
+        { year: '1902', income: 14, expenses: 8  },
+        { year: '1903', income: 46, expenses: 24 },
+        { year: '1904', income: 24, expenses: 13 },
+        { year: '1905', income: 60, expenses: 37 },
+        { year: '1906', income: 16, expenses: 5  },
+        { year: '1907', income: 59, expenses: 34 },
+        { year: '1908', income: 38, expenses: 23 },
+        { year: '1909', income: 36, expenses: 22 },
+        { year: '1910', income: 30, expenses: 9  },
+        { year: '1911', income: 51, expenses: 24 },
+        { year: '1912', income: 62, expenses: 39 },
+        { year: '1913', income: 18, expenses: 6  },
+        { year: '1914', income: 68, expenses: 43 },
+        { year: '1915', income: 45, expenses: 22 },
+        { year: '1916', income: 61, expenses: 39 },
+        { year: '1917', income: 73, expenses: 51 },
+    ];
+
+        $(function () {
+        $('#chartBox').dxChart({
+            dataSource: chartData,
+            series: [
+                {
+                    name: 'Доход',
+                    argumentField: 'year',
+                    argumentType: 'string',
+                    valueField: 'income',
+                    color: '#0077FF',
+                    label: {
+                        visible: true,
+                        backgroundColor: 'transparent',
+                        font: {
+                            color: '#0077FF'
+                        }
+                    }
+                },
+                {
+                    name: 'Расход',
+                    argumentField: 'year',
+                    argumentType: 'string',
+                    valueField: 'expenses',
+                    color: '#FF0000',
+                    label: {
+                        visible: true,
+                        backgroundColor: 'transparent',
+                        font: {
+                            color: '#FF0000'
+                        },
+                        verticalOffset: 10,
+                    }
+                }
+            ],
+            export: {
+                enabled: true,
+                fileName: 'Income',
+            },
+            legend: {
+                position: 'outside',
+                horizontalAlignment: 'center',
+                font: {
+                    color: 'black',
+                },
+                title: {
+                    font : {
+                        color: 'black',
+                        weight: 'bold',
+                    },
+                    text: 'Доходы и расходы купца до революции'
+                }
+            },
+            argumentAxis: {
+                label: {
+                    font: {
+                        color: 'black'
+                    }
+                }
+            },
+            valueAxis: {
+                label: {
+                    font: {
+                        color: 'black'
+                    }
+                }
+            },
+        });
+    });
+
+</script>
+
+</body>
+</html>
