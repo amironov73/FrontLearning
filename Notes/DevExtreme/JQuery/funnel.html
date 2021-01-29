@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Funnel</h1>
+
+<p>Воронка (Funnel) - это компонент пользовательского интерфейса,
+    который визуализирует значение на разных этапах в виде воронки.
+    Это помогает оценить изменения стоимости на этих этапах
+    и выявить потенциальные проблемы.</p>
+
+<div id="container"
+     style="width: 500px; margin: auto; border: thin solid blue; padding: 5px;">
+
+    <div id="funnelBox"></div>
+
+</div>
+
+<script>
+
+    var data = [
+        { argument: "Вошедшие в библиотеку", value: 9152 },
+        { argument: "Не испугавшиеся охраны", value: 6879 },
+        { argument: "Понявшие ресепшен", value: 5121 },
+        { argument: "Дошедшие до", value: 2224 },
+        { argument: "Победившие", value: 1670 }
+    ];
+
+    $(function () {
+        $('#funnelBox').dxFunnel ({
+            dataSource: data,
+            title: {
+                text: 'Читатели, победившие абонемент',
+                font: {
+                    color: 'black',
+                    weight: 'bold'
+                },
+                margin: { bottom: 30 }
+            },
+            argumentField: 'argument',
+            valueField: 'value',
+            palette: "Soft Pastel",
+            export: {
+                enabled: true
+            },
+            tooltip: {
+                enabled: true,
+            },
+            item: {
+                border: {
+                    visible: true
+                }
+            },
+            label: {
+                visible: true,
+                position: "inside",
+                backgroundColor: "none",
+                customizeText: function(e) {
+                    return "<span style='font-size: 28px'>" +
+                        e.percentText +
+                        "</span><br/>" +
+                        e.item.argument;
+                }
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

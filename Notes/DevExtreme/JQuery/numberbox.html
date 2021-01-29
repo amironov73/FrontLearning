@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .table { display: table;
+            margin: auto;
+            border: thin solid blue;
+            padding: 5px; }
+        .row   { display: table-row; }
+        .cell  { display: table-cell; padding: 2px; }
+    </style>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme NumberBox</h1>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            Отступ слева:
+        </div>
+        <div class="cell">
+            <div id="leftBox"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            Отступ сверху:
+        </div>
+        <div class="cell">
+            <div id="topBox"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            Отступ справа:
+        </div>
+        <div class="cell">
+            <div id="rightBox"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+            Отступ снизу:
+        </div>
+        <div class="cell">
+            <div id="bottomBox"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showNewValue(e) {
+        DevExpress.ui.notify ({message: e.value, position: 'top center' });
+    }
+
+    $(function () {
+        const leftBox = $("#leftBox").dxNumberBox({
+            stylingMode: 'filled',
+            min: 0,
+            max: 20,
+            value: 10,
+            width: 150,
+            buttons: [{
+                name: 'reset',
+                location: 'after',
+                options: {
+                    icon: 'undo',
+                    stylingMode: 'text',
+                    onClick: function() {
+                        leftBox.option('value', 10);
+                    }
+                }
+            }, {
+                name: 'plus',
+                location: 'after',
+                options: {
+                    icon: 'plus',
+                    stylingMode: 'text',
+                    onClick: function() {
+                        leftBox.option('value', leftBox.option('value') + 1);
+                    }
+                }
+            }, {
+                name: 'minus',
+                location: 'after',
+                options: {
+                    icon: 'minus',
+                    stylingMode: 'text',
+                    onClick: function() {
+                        leftBox.option('value', leftBox.option('value') - 1);
+                    }
+                }
+            }],
+            onValueChanged: showNewValue,
+        })
+            .dxNumberBox('instance');
+
+        const topBox = $("#topBox").dxNumberBox({
+            stylingMode: 'filled',
+            min: 0,
+            max: 20,
+            value: 5,
+            width: 150,
+            showSpinButtons: true,
+            onValueChanged: showNewValue,
+        })
+            .dxNumberBox('instance');
+
+        const rightBox = $("#rightBox").dxNumberBox({
+            stylingMode: 'filled',
+            min: 0,
+            max: 20,
+            value: 15,
+            width: 150,
+            showSpinButtons: true,
+            useLargeSpinButtons: true,
+            onValueChanged: showNewValue,
+        })
+            .dxNumberBox('instance');
+
+        const bottomBox = $("#bottomBox").dxNumberBox({
+            stylingMode: 'filled',
+            min: 0,
+            max: 20,
+            value: 12,
+            width: 150,
+            showSpinButtons: true,
+            onValueChanged: showNewValue,
+        })
+            .dxNumberBox('instance');
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Tabs</h1>
+
+<div id="tabsContainer"
+    style="width: 500px; margin: auto;">
+</div>
+
+<script>
+
+    const tabsItems = [
+        { text: 'User',     icon: 'user' },
+        { text: 'Comments', icon: 'comment' },
+        { text: 'Find',     icon: 'find' },
+    ];
+
+    $(function () {
+        $("#tabsContainer")
+            .dxTabs({
+                items: tabsItems,
+                onItemClick: function (e) {
+                    DevExpress.ui.notify(e.itemData.text);
+                }
+            });
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .dx-tile { background: #faf47e;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Gallery</h1>
+
+<p>Gallery - это компонент пользовательского интерфейса, который
+    отображает коллекцию изображений в виде карусели.
+    Компонент пользовательского интерфейса снабжен различными
+    элементами управления навигацией, которые позволяют пользователю
+    переключаться между изображениями.</p>
+
+<div id="galleryContainer"
+     style="width: 200px; margin: auto;">
+</div>
+
+<script>
+
+    const books = [
+        'img/book1.jpg',  'img/book2.jpg',  'img/book3.jpg',  'img/book4.jpg',
+        'img/book5.jpg',  'img/book6.jpg',  'img/book7.jpg',  'img/book8.jpg',
+        'img/book9.jpg',  'img/book10.jpg', 'img/book11.jpg', 'img/book12.jpg',
+        'img/book13.jpg', 'img/book14.jpg', 'img/book15.jpg', 'img/book16.jpg',
+        'img/book17.jpg', 'img/book18.jpg', 'img/book19.jpg', 'img/book20.jpg',
+    ];
+
+    $(function () {
+        $("#galleryContainer")
+            .dxGallery({
+                items: books,
+                height: 300,
+                swipeEnabled: true,
+                showNavButtons: false,
+                slideshowDelay: 1500,
+                showIndicator: false,
+                stretchImages: false,
+                loop: true,
+                initialItemWidth: 200,
+                //itemTemplate: function (data, index, element) {
+                //    element.append('<img src="' + data + '" height="300"/>');
+                //},
+                onItemClick: function (e) {
+                    DevExpress.ui.notify(e.itemData);
+                }
+            });
+    });
+
+</script>
+
+</body>
+</html>

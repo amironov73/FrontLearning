@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme LoadPanel</h1>
+
+<p>LoadPanel - это оверлейный (демонстрируемый поверх других) компонент
+    пользовательского интерфейса, уведомляющий пользователя о том,
+    что выполняется некий (возможно, долгий) процесс, например,
+    загрузка файла на сервер.
+
+<div id="container"
+     style="width: 500px; margin: auto;">
+
+    <div id="loadPanel"></div>
+    <div style="height: 10px;"></div>
+    <div id="startButton" style="margin-left: 180px;"></div>
+
+</div>
+
+<script>
+
+    let panel;
+
+    $(function () {
+        panel = $('#loadPanel').dxLoadPanel ({
+                closeOnOutsideClick: false,
+                message: 'Подождите немного',
+                shadingColor: 'rgba(0, 0, 0, 0.2)',
+                indicatorSrc: 'img/irbis.gif'
+            })
+            .dxLoadPanel('instance');
+
+        $('#startButton').dxButton({
+            text: 'Начать процесс',
+            type: 'default',
+            onClick: function () {
+                panel.show();
+                setTimeout(function () {
+                    panel.hide();
+                }, 3000);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

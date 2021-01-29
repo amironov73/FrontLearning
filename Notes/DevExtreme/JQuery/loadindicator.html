@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme LoadIndicator</h1>
+
+<p>LoadIndicator - это элемент пользовательского интерфейса,
+    уведомляющий пользователя о том, что выполняется некий
+    (возможно, долгий) процесс, например, загрузка файла
+    на сервер.</p>
+
+<div id="container"
+     style="width: 500px; margin: auto;">
+
+    <div id="indicatorBox" style="margin-left: 200px;"></div>
+    <div style="height: 10px;"></div>
+    <div id="startButton" style="margin-left: 180px;"></div>
+
+</div>
+
+<script>
+
+    let indicator;
+
+    $(function () {
+        indicator = $('#indicatorBox').dxLoadIndicator ({
+            width: 100,
+            height: 100,
+            visible: false,
+            indicatorSrc: 'img/irbis.gif'
+        })
+        .dxLoadIndicator('instance');
+
+        $('#startButton').dxButton({
+            text: 'Начать процесс',
+            type: 'default',
+            onClick: function () {
+                indicator.option('visible', true);
+                setTimeout(function () {
+                    indicator.option('visible', false);
+                }, 2000);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

@@ -30,6 +30,9 @@
 
 <h1>DevExtreme TextBox</h1>
 
+<p>TextBox - это компонент пользовательского интерфейса, который позволяет
+    пользователю вводить и редактировать одну строку текста.</p>
+
 <div class="table"
      style="width: 300px; margin: auto; border: thin solid blue;">
     <div class="row">
@@ -78,11 +81,23 @@
     $(function () {
         $('#firstNameBox').dxTextBox({
             stylingMode: 'filled',
+            showClearButton: true,
             onValueChanged: showFullName
         });
 
         $('#lastNameBox').dxTextBox({
             stylingMode: 'filled',
+            buttons: [{
+                name: 'reset',
+                location: 'after',
+                options: {
+                    icon: 'undo',
+                    stylingMode: 'text',
+                    onClick: function() {
+                        $('#lastNameBox').dxTextBox('instance').reset();
+                    }
+                }
+            }],
             onValueChanged: showFullName
         });
 

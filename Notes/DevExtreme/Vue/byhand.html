@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подключение Vue.js вручную</title>
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+
+<body class="dx-viewport">
+
+<h1>Подключение Vue.js вручную</h1>
+
+<div id="app">
+    <p>Вот важное сообщение, полученное космонавтами в ходе внеочередного
+        сеанса связи с Центром управления полётами: <b>"{{message}}"</b></p>
+    <p><div id="testButton"></div></p>
+</div>
+
+<script>
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Привет, Vue.js!',
+        }
+    });
+
+    $(function () {
+        $('#testButton').dxButton({
+            icon: 'todo',
+            text: 'Нажми меня!',
+            type: 'default',
+            onClick: function () {
+                DevExpress.ui.notify({
+                    message: 'Ура! Оно работает!',
+                    position: 'top center',
+                    type: 'success'
+                });
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Funnel</h1>
+
+<p>DropDownBox - это компонент пользовательского интерфейса, который
+    состоит из текстового поля, в котором отображается текущее значение,
+    и раскрывающегося поля, которое может содержать любой элемент
+    пользовательского интерфейса.</p>
+
+<div id="container"
+     style="width: 500px; margin: auto; border: thin solid blue; padding: 5px;">
+
+    <div id="dropDownBox"></div>
+
+</div>
+
+<script>
+
+    const countries = [
+        { country: 'Австралия',      capital: 'Канберра',     area: 7686850, population: 24238610  },
+        { country: 'Австрия',        capital: 'Вена',         area: 83858,   population: 8741753   },
+        { country: 'Азербайджан',    capital: 'Баку',         area: 86600,   population: 9705600   },
+        { country: 'Алжир',          capital: 'Алжир',        area: 2381740, population: 39813722  },
+        { country: 'Ангола',         capital: 'Луанда',       area: 1246700, population: 25831000  },
+        { country: 'Аргентина',      capital: 'Буэнос-Айрес', area: 2766890, population: 43847000  },
+        { country: 'Армения',        capital: 'Ереван',       area: 29741,   population: 2995100   },
+        { country: 'Афганистан',     capital: 'Кабул',        area: 647500,  population: 29822848  },
+        { country: 'Бангладеш',      capital: 'Дакка',        area: 144000,  population: 160221000 },
+        { country: 'Белоруссия',     capital: 'Минск',        area: 207595,  population: 9498400   },
+        { country: 'Бельгия',        capital: 'Брюссель',     area: 30528,   population: 11250585  },
+        { country: 'Болгария',       capital: 'София',        area: 110910,  population: 7153784   },
+        { country: 'Бразилия',       capital: 'Бразилиа',     area: 8511965, population: 206081432 },
+        { country: 'Ватикан',        capital: 'Ватикан',      area: 0.44,    population: 842       },
+        { country: 'Великобритания', capital: 'Лондон',       area: 244820,  population: 65341183  },
+        { country: 'Венгрия',        capital: 'Будапешт',     area: 93030,   population: 9830485   },
+        { country: 'Венесуэла',      capital: 'Каракас',      area: 912050,  population: 31028637  },
+        { country: 'Вьетнам',        capital: 'Ханой',        area: 329560,  population: 91713300  }
+    ];
+
+    $(function () {
+        $('#dropDownBox').dxDropDownBox ({
+            value: countries[0].country,
+            dataSource: countries,
+            contentTemplate: function(e) {
+                const $list = $("<div>").dxList({
+                    dataSource: e.component.option("dataSource"),
+                    displayExpr: 'country',
+                    selectionMode: "single",
+                    onSelectionChanged: function(arg) {
+                        e.component.option("value", arg.addedItems[0].country);
+                        e.component.close();
+                    }
+                });
+                return $list;
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

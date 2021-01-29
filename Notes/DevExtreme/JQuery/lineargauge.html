@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme LinearGauge</h1>
+
+
+<div id="container"
+     style="width: 500px; margin: auto; padding: 5px;">
+
+    <div id="gauge"></div>
+
+</div>
+
+<script>
+
+    $(function () {
+        $('#gauge').dxLinearGauge({
+            title: {
+                text: 'Температура (°C)',
+                font: {
+                    color: 'black',
+                    weight: 'bold',
+                    size: 16
+                }
+            },
+            value: 24,
+            tooltip: {
+                enabled: true,
+                customizeTooltip: function (arg) {
+                    return {
+                        text: arg.valueText
+                    };
+                },
+            },
+            rangeContainer: {
+                ranges: [
+                    {startValue: -40, endValue: 40, color: '#A0A0A0'},
+                ],
+                width: 2,
+            },
+            scale: {
+                startValue: -40,
+                endValue: 40,
+                tickInterval: 10,
+                tick: {
+                    color: 'black',
+                    length: 7,
+                    width: 1,
+                    visible: true
+                },
+                minorTick: {
+                    color: 'black',
+                    length: 5,
+                    width: 1,
+                    visible: true
+                },
+                minorTickInterval: 5,
+            },
+            valueIndicator: {
+                type: 'triangleMarker',
+                color: 'red',
+                width: 15
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
