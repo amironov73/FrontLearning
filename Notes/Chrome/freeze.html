@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chrome DevTools</title>
+
+    <style>
+        kbd {
+            display: inline-block;
+            margin: 0 .1em;
+            padding: .1em .6em;
+            font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #242729;
+            text-shadow: 0 1px 0 #fff;
+            background-color: #e1e3e5;
+            border: 1px solid #adb3b9;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgb(12, 13, 14), 0 0 0 2px #fff inset;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Заморозка страницы в Chrome Developer Tools</h1>
+
+<p>Бывает так, что нужно отладить HTML/CSS на странице,
+    но DOM-элементы появляются и исчезают буквально
+    от малейшего движения мышью, а также по причине
+    срабатывания таймеров в JavaScript. На этот случай
+    в Chrome Developer Tools
+    <a href="https://stackoverflow.com/questions/17931571/freeze-screen-in-chrome-debugger-devtools-panel-for-popover-inspection">
+        предусмотрена «заморозка» страницы</a>.
+</p>
+
+<div style="width: 724px; margin: auto;">
+    <img src="img/freeze.png" alt="Chrome Dev Tools">
+</div>
+
+<ol>
+    <li>Открываем нужную страницу.</li>
+    <li>Открываем DevTools: <kbd>F12</kbd>.</li>
+    <li>Переключаемся на вкладку <code>Sources</code> в DevTools.</li>
+    <li>На странице зависаем мышью над нужным нам элементом, чтобы,
+        например, появился нужный нам попап.</li>
+    <li>Нажимаем <kbd>F8</kbd>. Важно: последний клик мышью
+        перед нажатием <kbd>F8</kbd> должен быть
+        в области инспектора, а не на веб-странице!</li>
+    <li>Неспеша находим нужный нам элемент в DOM-дереве,
+        изучаем, редактируем его свойства, не опасаясь,
+        что он пропадёт.</li>
+    <li>Чтобы снять «заморозку» страницы, снова нажимаем
+        <kbd>F8</kbd>.</li>
+</ol>
+
+<p>Очень полезная фича!</p>
+
+</body>
+</html>
