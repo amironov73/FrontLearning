@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme Tooltip</h1>
+
+<p>Компонент пользовательского интерфейса Tooltip
+    отображает всплывающую подсказку для указанного
+    элемента на странице.</p>
+
+<div id="container" style="margin: auto; width: 200px;">
+    <img id="bookImage" src="img/book1.jpg" width="100%" alt="The book" />
+    <div id="tooltipContainer"></div>
+</div>
+
+<script>
+
+    $(function () {
+        $('#tooltipContainer').dxTooltip({
+            target: '#bookImage',
+            showEvent: 'dxhoverstart',
+            hideEvent: 'dxhoverend',
+            contentTemplate: function (contentElement) {
+                contentElement.append(
+                    $("<p />").text("Обложка книги")
+                )
+                .css('background', 'lightgreen')
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

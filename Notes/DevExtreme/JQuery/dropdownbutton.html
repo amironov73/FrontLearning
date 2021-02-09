@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme DropDownButton</h1>
+
+<p>DropDownButton сочетает в себе функциональность кнопки и раскрывающегося меню.
+    Можно заменить меню настраиваемым раскрывающимся списком.</p>
+
+<div id="container" style="margin: auto; width: 170px;">
+    <div id="dropDownButton"></div>
+</div>
+
+<script>
+
+    const actions = [
+        { id: 1, text: "Profile",  icon: "user" },
+        { id: 2, text: "Messages", icon: "email" },
+        { id: 3, text: "Contacts", icon: "group" },
+        { id: 4, text: "Log out",  icon: "runner" }
+    ];
+
+    $(function () {
+        $('#dropDownButton').dxDropDownButton({
+            text: "Sandra Johnson",
+            icon: "user",
+            items: actions,
+            keyExpr: 'id',
+            displayExpr: 'text',
+            onItemClick: function (e) {
+                DevExpress.ui.notify({
+                    message: e.itemData.text,
+                    position: 'top center',
+                    type: 'success'
+                })
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

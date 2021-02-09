@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <title>Осваиваем DevExtreme</title>
+
+    <style>
+        .photo-popup-content {
+            text-align: center;
+        }
+        .photo-popup-content .photo-popup-image {
+            height: 100%;
+            max-width: 100%;
+        }
+    </style>
+
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme FileManager</h1>
+
+<p>Компонент FileManager предоставляет пользователю визуальный
+    интерфейс для манипулирования файлами и папками.</p>
+
+<p>FileManager построен поверх абстракции провайдера файловой системы,
+    т. е. объекта, который может: 1) предоставить список файлов и папок,
+    2) удалить указанные файл/папку, 3) переместить или скопировать указанные
+    файл/папку, 4) создать файл/папку. В настоящее время поддерживается
+    три провайдера: 1) удалённая файловая система, расположенная на сервере
+    и задаваемая параметром <code>endpointUrl</code>, 2) объектная файловая
+    система, описывающая псевдофайлы/псевдопапки, расположенные в оперативной
+    памяти клиента, 3) кастомная файловая система, реализованная программистом.
+    </p>
+
+<div id="managerBox" style="margin: auto;"></div>
+
+<div id="photo-popup"></div>
+
+<script>
+
+    const provider = new DevExpress.fileManagement.RemoteFileSystemProvider({
+        endpointUrl: 'https://js.devexpress.com/Demos/Mvc/api/file-manager-file-system-images'
+    });
+
+
+    $(function () {
+        $('#managerBox').dxFileManager({
+            name: 'fileManager',
+            fileSystemProvider: provider,
+            currentPath: "Widescreen",
+            permissions: {
+                create: true,
+                copy: true,
+                move: true,
+                delete: true,
+                rename: true,
+                upload: true,
+                download: true
+            },
+            onSelectedFileOpened: function(e) {
+                var popup = $("#photo-popup").dxPopup('instance');
+                popup.option({
+                    title: e.file.name,
+                    contentTemplate: '<img src="' + e.file.dataItem.url + '" class="photo-popup-image" />',
+                });
+                popup.show();
+            }
+        });
+
+        $('#photo-popup').dxPopup({
+            maxHeight: 600,
+            closeOnOutsideClick: true,
+            onContentReady: function(e) {
+                var $contentElement = e.component.content();
+                $contentElement.addClass('photo-popup-content');
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
