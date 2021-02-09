@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/dx.common.css" rel="stylesheet">
+    <link href="css/dx.softblue.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dx.all.js"></script>
+    <link href="css/fa.min.css" rel="stylesheet">
+    <title>Осваиваем DevExtreme</title>
+</head>
+
+<body class="dx-viewport">
+
+<h1>DevExtreme ContextMenu</h1>
+
+<img id="image1" src="img/book1.jpg"
+     style="width: 100px; margin: auto; display: block;"
+     alt="Some image">
+<div id="contextMenu"></div>
+
+<script>
+
+    const menuItems = [
+        { text: 'Zoom In', icon: 'fas fa-search-plus' },
+        { text: 'Zoom Out', icon: 'fas fa-search-minus' },
+        {
+            text: 'Share',
+            items: [{
+                text: 'Send to a friend',
+                items: [
+                    { text: 'Log in with Facebook' },
+                    { text: 'Log in with Twitter' }
+                ]
+            }, {
+                text: 'Send to a group',
+                items: [
+                    { text: 'Log in with Facebook' },
+                    { text: 'Log in with Twitter' }
+                ]
+            }]
+        },
+        { text: 'Comment' }
+    ];
+
+    $(function () {
+        $('#contextMenu').dxContextMenu({
+            items: menuItems,
+            target: '#image1',
+            onItemClick: function(e) {
+                const itemData = e.itemData;
+                const itemElement = e.itemElement;
+                const itemIndex = e.itemIndex;
+                DevExpress.ui.notify(itemData.text);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
