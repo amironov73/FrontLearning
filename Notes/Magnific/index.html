@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/magnific.css">
+    <script type="application/javascript" src="js/jquery.min.js"></script>
+    <script type="application/javascript" src="js/magnific.min.js"></script>
+
+    <title>Осваиваем Magnific</title>
+
+    <style>
+        .white-popup {
+            position: relative;
+            background: #FFF;
+            padding: 3mm;
+            width: auto;
+            max-width: 500px;
+            margin: 6mm auto;
+        }
+    </style>
+</head>
+
+<body style="font-family: Helvetica Neue, Segoe UI, helvetica, verdana, sans-serif ">
+
+<h3>Осваиваем Magnific Popup</h3>
+
+<p>Magnific Popup — jQuery плагин всплывающих окон, сделанный
+    с акцентом на производительность и удобство пользования.
+    Так кратко описывает автор скрипта — Дмитрий Семенов.</p>
+
+<a href="#text-popup" class="popup-content">Вызвать окно с текстом</a>
+
+<div id="text-popup" class="white-popup mfp-hide">
+    <img style="width: 35mm; margin: 3mm; float: left;"
+            src="img/doggy.jpg">
+    <p>У попа была собака, он её любил. Она съела кусок мяса,
+    он её убил. В землю закопал и надпись написал.
+    Что у попа была собака, он её любил. Она съела кусок мяса,
+    он её убил. В землю закопал и надпись написал.</p>
+</div>
+
+<script>
+    jQuery(document).ready(function($) {
+        $('.popup-content').magnificPopup({
+            type: 'inline'
+        });
+    });
+</script>
+
+</body>
+</html>
