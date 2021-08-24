@@ -28,10 +28,11 @@
 <script>
     import Widget from './Widget.svelte';
     
-    <div>
-        <Widget/>
-    </div>
 </script>
+
+<div>
+    <Widget/>
+</div>
 ```
 
 * **экспорт переменных**, в терминологии Svelt именющихся `property` (`prop` для краткости):
