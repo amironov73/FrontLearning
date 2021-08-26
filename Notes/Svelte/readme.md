@@ -100,15 +100,14 @@ npm run build
 <script>
     let first = 123;
     let second = 345;
-    let summa = first + second;
          
-    $: summa = parseInt(first) + parseInt(second);
+    $: summa = first + second;
 </script>
  
 <main>
-    <input type="text" bind:value="{first}"><br/>
-    <input type="text" bind:value="{second}"><br/>
-    <input type="text" bind:value="{summa}">
+    <input type="number" bind:value="{first}"><br/>
+    <input type="number" bind:value="{second}"><br/>
+    <input type="number" readonly value="{summa}">
 </main>
  
 <style>
