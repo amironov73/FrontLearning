@@ -447,3 +447,52 @@ transiion = (node: HTMLElement, params: any => {
 * `in` срабатывает только при появлении элемента;
 * `out` срабатывает только при исчезновении элемента.
 
+### slot
+
+Компонент Svelte может представлять собой нечто вроде контейнера для контента, вкладываемого в него внешним компонентом. Например, он может отрисовывать красивую рамку вокруг контента. Или рисовать круг:
+
+**`Circle.svelte`**:
+
+```html
+<div>
+    <slot/>
+</div>
+
+<style>
+div {
+    width:200px;
+    height:200px;
+    background-color:yellow;
+    color:red;
+    border: thin solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 18pt;
+}
+</style>
+```
+
+**`App.svelte`**:
+
+```html
+<script>
+    import Circle from './Circle.svelte';
+</script>
+
+<Circle>
+    <div>
+        <strong>Hello</strong>
+    </div>
+    <br/>
+    <div>
+        World
+    </div>
+</Circle>
+```
+
+Получается вот что:
+
+![svelte-circle](img/svelte-circle.png)
