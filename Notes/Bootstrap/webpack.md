@@ -1,6 +1,6 @@
 ### Bootstrap 5 с Webpack 5
 
-Создаем пустой проект Node.js и добавляем в него Webpack с "добавками":
+Создаем пустой проект Node.js и добавляем в него Bootstrap и Webpack с "приправами":
 
 ```shell
 mkdir sample
